@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>DES Playground</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.52.1/build/stlite.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.52.1/build/stlite.js"></script>
+    <script>
+      stlite.mount(
+  {
+    requirements: ["simpy", "pandas", "numpy", "plotly"],
+    entrypoint: "Overview.py",
+    files: {
+      "Introduction.py": {
+        url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/Overview.py"
+      },
+      "0_🎱_Interactive_simulation": {
+        url: "https://github.com/pythonhealthdatascience/stars-stlite-example/blob/main/pages/0_%F0%9F%8E%B1_Interactive_simulation.py"
+      },
+     "pages/3_💫_About.py": {
+        url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/3_%F0%9F%92%AB_About.py"
+      },
+      "model.py": {
+        url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/model.py"
+      },
+      "more_plot.py": {
+        url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/more_plot.py"
+
+      }
+    },
+  },
+  document.getElementById("root")
+);
+    </script>
+  </body>
+</html>
