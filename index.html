@@ -22,11 +22,14 @@
     requirements: ["simpy", "pandas", "numpy", "plotly", "asyncio"],
     entrypoint: "Overview.py",
     files: {
-      "Overview.py": 
-        `
-import streamlit as st
-st.title("Treatment Centre Simulation Model")
-`,    
+//       "Overview.py": 
+//         `
+// import streamlit as st
+// st.title("Treatment Centre Simulation Model")
+// `,    
+"Overview.py": {
+    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/Overview.py"
+},
 "pages/0_Interactive_simulation": {
     url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/0_Interactive_simulation.py"
 },
