@@ -71,8 +71,8 @@ st.set_page_config(
 
 st.title('Treatment Centre Simulation Model')
 
-# image = Image.open('img/nihr.png')
-# st.image(image)
+image = Image.open('img/nihr.png')
+st.image(image)
 
 st.markdown(INFO_1)
 
