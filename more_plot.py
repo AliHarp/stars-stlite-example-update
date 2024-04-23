@@ -55,26 +55,6 @@ def ci_percentile(results, field, percentile, critical_value=1.96):
     y_beta_2 = results[field].quantile(percentile + half_width)
     return y_beta_1, y_beta_2
 
-def as_horizontal_axis_fraction(value, xmin, xmax):
-    '''Convert a axis value to a fraction accounting for the 
-    minimum on the xaxis (i.e. axis may not start from 0).
-    '''
-    return (value - xmin) / (xmax - xmin)
-
-
-def draw_interval(ax, start, end, style="|-|", lw=3, color='b'):
-    '''Annotate a matplotlib chart underneath x axis with an confidence interval.
-    '''
-    _ = ax.annotate('', xy=(start, -0.1), xycoords='axes fraction', 
-                       xytext=(end, -0.1),
-                       arrowprops=dict(arrowstyle=style, color=color, lw=lw))
-
-
-def more_plotly(data, x_label, percentiles=(0.05, 0.95), surpress_warnings=False):
-import numpy as np
-import plotly.express as px
-import plotly.graph_objects as go
-
 def more_plotly(data, x_label, percentiles=(0.05, 0.95), suppress_warnings=False):
     """Interactive Measure of Risk and Error (MORE) plot via PLOTLY
     
