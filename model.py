@@ -31,7 +31,6 @@ import numpy as np
 import pandas as pd
 import itertools
 import math
-import matplotlib.pyplot as plt
 import simpy
 
 # Constants and defaults for modelling **as-is**
