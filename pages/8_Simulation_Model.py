@@ -4,6 +4,7 @@ import numpy as np
 import model as md
 import plotly.express as px
 from PIL import Image
+import asyncio
 
 # Modifcation use of Plotly implementation of MORE plot
 from more_plot import more_plotly
@@ -149,6 +150,9 @@ replications = st.number_input("Multiple runs", value=10, placeholder="Enter no.
 if st.button('Simulate treatment centre'):
     # Get results
     with st.spinner('Simulating the treatment centre...'):
+        
+        # issue to workaround stlite single threaded environment.
+        await asyncio.sleep(0.1)  # Add this line to wait for the spinner to start showing
         results = md.multiple_replications(args, n_reps = replications)
         
     st.success('Done!')
