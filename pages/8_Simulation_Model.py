@@ -5,9 +5,6 @@ import model as md
 import plotly.express as px
 # from PIL import Image
 
-# Modification -> upgrade from matplotlib
-from utility import get_arrival_chart
-
 # Modifcation use of Plotly implementation of MORE plot
 from more_plot import more_plotly
 
