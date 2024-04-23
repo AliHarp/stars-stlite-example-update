@@ -55,45 +55,43 @@ def run_experiments(scenarios, n_reps):
 def results_as_summary_frame(results):
     return md.scenario_summary_frame(results).round(1)
 
-def main():
-    st.title(TITLE)
-    st.markdown(INFO_3)
+
+st.title(TITLE)
+st.markdown(INFO_3)
 
 
-    uploaded_file = st.file_uploader("Choose a file")
-    df_results = pd.DataFrame()
-    if uploaded_file is not None:
-        # assumes CSV
-        df_scenarios = pd.read_csv(uploaded_file, index_col=0)
-        st.write('**Loaded Experiments**')
-        st.table(df_scenarios)
-        st.markdown(INFO_4 + INFO_5)
+uploaded_file = st.file_uploader("Choose a file")
+df_results = pd.DataFrame()
+if uploaded_file is not None:
+    # assumes CSV
+    df_scenarios = pd.read_csv(uploaded_file, index_col=0)
+    st.write('**Loaded Experiments**')
+    st.table(df_scenarios)
+    st.markdown(INFO_4 + INFO_5)
 
-        # loop through scenarios, create and run model
-        n_reps = st.slider('Replications', 3, 30, 5, step=1)
-        
-        if st.button(EXECUTE_TXT):
-
-            # create the cust scenarios based on upload
-            cust_scenarios = create_scenarios(df_scenarios) 
-            with st.spinner('Running scenario analysis'):
-                results = run_experiments(cust_scenarios, n_reps)
-                st.success('Done!')
-                df_results = results_as_summary_frame(results)
-                # display in the app via table
-                st.table(df_results)
-                
-
-            # STREAMLIT BUG: this cycles between working and 404 error...
-            st.download_button(
-            "Download results as .csv",
-            convert_df(df_results),
-            "experiment_results.csv",
-            "text/csv",
-            key='download-csv'
-            )
+    # loop through scenarios, create and run model
+    n_reps = st.slider('Replications', 3, 30, 5, step=1)
     
-main()
+    if st.button(EXECUTE_TXT):
+
+        # create the cust scenarios based on upload
+        cust_scenarios = create_scenarios(df_scenarios) 
+        with st.spinner('Running scenario analysis'):
+            results = run_experiments(cust_scenarios, n_reps)
+            st.success('Done!')
+            df_results = results_as_summary_frame(results)
+            # display in the app via table
+            st.table(df_results)
+            
+
+        # STREAMLIT BUG: this cycles between working and 404 error...
+        st.download_button(
+        "Download results as .csv",
+        convert_df(df_results),
+        "experiment_results.csv",
+        "text/csv",
+        key='download-csv'
+        )
 
     
 
