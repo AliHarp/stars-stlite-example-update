@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import model as md
 import plotly.express as px
-# from PIL import Image
+from PIL import Image
 
 # Modifcation use of Plotly implementation of MORE plot
 from more_plot import more_plotly
