@@ -93,5 +93,4 @@ def main():
             key='download-csv'
             )
     
-if __name__ == '__main__':
-    main()
+main()
