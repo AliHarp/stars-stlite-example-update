@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import model as md
-from PIL import Image
+# from PIL import Image
 
 # Modification -> upgrade from matplotlib
 import plotly.express as px
@@ -73,8 +73,8 @@ st.set_page_config(
 
 st.title('Treatment Centre Simulation Model')
 
-image = Image.open('img/nihr.png')
-st.image(image)
+# image = Image.open('img/nihr.png')
+# st.image(image)
 
 st.markdown(INFO_1)
 
