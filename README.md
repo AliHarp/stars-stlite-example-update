@@ -44,7 +44,9 @@ The model will run on a users browser without the need to manually install any c
 ```
 ## Funding
 
-This code is part of independent research supported by the National Institute for Health Research Applied Research Collaboration South West Peninsula. The views expressed in this publication are those of the author(s) and not necessarily those of the National Institute for Health Research or the Department of Health and Social Care.
+STARS is funded by the [UK Research and Innovation (UKRI)](https://www.ukri.org/) Medical Research Council's (MRC) [*Better Methods, Better Research* programme](https://www.ukri.org/opportunity/better-methods-better-research/).
+
+> 🗒️ The original code from `stars-streamlit-example` is independent research supported by the National Institute for Health Research Applied Research Collaboration South West Peninsula. The views expressed in this publication are those of the author(s) and not necessarily those of the National Institute for Health Research or the Department of Health and Social Care.
 
 ## Case study model
 
@@ -54,15 +56,11 @@ This code is part of independent research supported by the National Institute fo
 
 We adapt a textbook example from Nelson (2013): a terminating discrete-event simulation model of a U.S based treatment centre. In the model, patients arrive to the health centre between 6am and 12am following a non-stationary Poisson process. On arrival, all patients sign-in and are triaged into two classes: trauma and non-trauma. Trauma patients include impact injuries, broken bones, strains or cuts etc. Non-trauma include acute sickness, pain, and general feelings of being unwell etc. Trauma patients must first be stabilised in a trauma room. These patients then undergo treatment in a cubicle before being discharged. Non-trauma patients go through registration and examination activities. A proportion of non-trauma patients require treatment in a cubicle before being discharged. The model predicts waiting time and resource utilisation statistics for the treatment centre. The model allows managers to ask question about the physical design and layout of the treatment centre, the order in which patients are seen, the diagnostic equipment needed by patients, and the speed of treatments. For example: “what if we converted a doctors examination room into a room where nurses assess the urgency of the patients needs.”; or “what if the number of patients we treat in the afternoon doubled” 
 
-## Streamlit community cloud deployment of the code
+## Deployment
 
-* https://stars-simpy-example.streamlit.app/
+The model has been deployed to GitHub pages and uses `stlite`
 
-A backup and replica of the web app is available here:
-
-* https://treat-sim.streamlit.app
-
-> Please note that we have deployed this to the a free tier service.  If the app has not been used for a time then you will need to "wake up" the app.  Please be patient while it reboots.
+* https://pythonhealthdatascience.github.io/stars-stlite-example
 
 
 ## Online documentation produced by Jupyter-book
@@ -72,52 +70,3 @@ A backup and replica of the web app is available here:
 We have a separate artifact that documents the model. 
 
 * The documentation can be access at [https://pythonhealthdatascience.github.io/stars-simpy-example-docs](https://pythonhealthdatascience.github.io/stars-simpy-example-docs)
-
-## Docker container
-
-A containerised version of the model is available from Dockerhub.  Follow the link and the instructions provided.  Note tht you will need docker installed in order to pull and run the container.
-
-* https://hub.docker.com/r/tommonks01/streamlit_sim
-
-## How to create the model interface locally
-
-Alternatively you may wish to create the website on your local machine.  
-
-### Downloading the code
-
-Either clone the repository using git or click on the green "code" button and select "Download Zip".
-
-```bash
-git clone https://github.com/pythonhealthdatascience/stars-streamlit-example
-```
-
-### Installing dependencies
-
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/release/python-3100+/)
-
-All dependencies can be found in [`binder/environment.yml`]() and are pulled from conda-forge.  To run the code locally, we recommend install [mini-conda](https://docs.conda.io/en/latest/miniconda.html); navigating your terminal (or cmd prompt) to the directory containing the repo and issuing the following command:
-
-```bash
-conda env create -f binder/environment.yml
-```
-
-To activate the environment issue the following command:
-
-```bash
-conda activate stars_streamlit`
-```
-
-### Running the interface to the model
-
-In the directory (folder) containing the code issue the following command via the terminal (or cmd prompt/powershell on windows)
-
-```bash
-streamlit run Overview.py
-```
-
-This should open your browser and launch the interface automatically.  Alternatively you can navigate to the following URL.
-
-```bash
-http://localhost:8501
-```
-
