@@ -3,7 +3,7 @@ import urllib.request as request
 
 LICENSE_FILE = (
     "https://raw.githubusercontent.com/pythonhealthdatascience/"
-    + "stars-streamlit-example/dev/LICENSE"
+    + "stars-stlite-example/dev/LICENSE"
 )
 
 LICENSE_PAGE_TXT = (

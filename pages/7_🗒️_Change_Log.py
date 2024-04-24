@@ -9,7 +9,7 @@ import urllib.request as request
 
 FILE = (
     "https://raw.githubusercontent.com/pythonhealthdatascience/"
-    + "stars-streamlit-example/main/CHANGES.md"
+    + "stars-stlite-example/main/CHANGES.md"
 )
 
 

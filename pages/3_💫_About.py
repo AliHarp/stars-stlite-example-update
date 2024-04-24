@@ -13,7 +13,7 @@ import urllib.request as request
 
 FILE = (
     "https://raw.githubusercontent.com/pythonhealthdatascience/"
-    + "stars-streamlit-example/main/txt/acknowledgement.md"
+    + "stars-stlite-example/main/txt/acknowledgement.md"
 )
 
 

@@ -14,7 +14,7 @@ import urllib.request as request
 
 FILE = (
     "https://raw.githubusercontent.com/pythonhealthdatascience/"
-    + "stars-streamlit-example/main/txt/resources.md"
+    + "stars-stlite-example/main/txt/resources.md"
 )
 
 
