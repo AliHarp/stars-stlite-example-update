@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-import model as md
+import treat_sim.model as md
 
 
 

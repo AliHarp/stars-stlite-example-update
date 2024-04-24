@@ -6,7 +6,7 @@
 
 ## Code Repositories and Archive
 
-> GitHub: https://github.com/pythonhealthdatascience/stars-streamlit-example 
+> GitHub: https://github.com/pythonhealthdatascience/stars-stlite-example 
 
 > Citable archive: https://zenodo.org/records/10935920
 

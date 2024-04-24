@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-import model as md
+import treat_sim.model as md
 
 TITLE = 'Create custom experiments'
 INFO_3 = '### Upload custom scenarios and compare results.'
