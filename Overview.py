@@ -19,7 +19,7 @@ INFO_1 = """**A simple simulation model of a urgent care and treatment centre.**
 
 OVERVIEW_PATH = (
     "https://raw.githubusercontent.com/pythonhealthdatascience/"
-    + "stars-streamlit-example/main/txt/overview.md"
+    + "stars-stlite-example/main/txt/overview.md"
 )
 
 
