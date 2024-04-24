@@ -3,8 +3,8 @@
 
 cff-version: 1.2.0
 title: >-
-  Towards Sharing Tools and Artifacts for Reusable
-  Simulation: deploying a `simpy` model as a web app
+  Towards Sharing Tools and Artifacts for Reproducible 
+  Simulation **(v1.5)**: an `stlite` template for `simpy` models
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -19,13 +19,15 @@ authors:
     affiliation: University of Exeter
     orcid: 'https://orcid.org/0000-0001-5274-5037'
 repository-code: >-
-  https://github.com/pythonhealthdatascience/stars-streamlit-example
+  https://github.com/pythonhealthdatascience/stars-stlite-example
 url: >-
-  https://pythonhealthdatascience.github.io/stars-simpy-example-docs
+  https://pythonhealthdatascience.github.io/stars-stlite-example/
 keywords:
   - Discrete-event simulation
   - simpy
   - streamlit
+  - stlite
+  - WebAssembly
   - open science
   - reproducibility
   - web app
