@@ -7,6 +7,7 @@
 * FORKED: `stars-streamlit-example` at v3.0.0. https://github.com/pythonhealthdatascience/stars-streamlit-example 
 * DEPLOY: Modified code to use `stlite` v0.52.4 and run locally in the browser instead of deploying a `streamlit` app via streamlit community cloud.
 * ENV: Dropped all support for `matplotlib` and removed all `matplotlib` code from `more_plot.py`
+* ENV: Introduced PyPi `treat-sim` v1.1.0 dependency and dropped model.py
 * CITE: Updated CITATION.cff meta data 
 * DOCKER: removed all docker support and associated files.
 * PAGES: Information updates to About page.
