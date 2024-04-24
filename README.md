@@ -4,20 +4,20 @@
 [![Read the Docs](https://readthedocs.org/projects/pip/badge/?version=latest)](https://pythonhealthdatascience.github.io/stars-simpy-example-docs)
 [![License: MIT](https://img.shields.io/badge/ORCID-0000--0001--5274--5037-brightgreen)](https://orcid.org/0000-0001-5274-5037)
 [![License: MIT](https://img.shields.io/badge/ORCID-0000--0003--2631--4481-brightgreen)](https://orcid.org/0000-0003-2631-4481)
-[<img src="https://img.shields.io/static/v1?label=dockerhub&message=images&color=important?style=for-the-badge&logo=docker">](https://hub.docker.com/r/tommonks01/treat_sim)
-
-# 💫 Towards Sharing Tools and Artifacts for Reusable Simulation: deploying a `simpy` model as a web app
 
 ## Overview
 
-The materials and methods in this repository support work towards developing the S.T.A.R.S healthcare framework (**S**haring **T**ools and **A**rtifacts for **R**eusable **S**imulations in healthcare).  The code and written materials here demonstrate the application of S.T.A.R.S' version 1 to sharing a `simpy` discrete-event simuilation model and associated research artifacts.  
+# 💫 Towards Sharing Tools and Artifacts for **Reproducible** Simulation **(v1.5)**: an `stlite` template for `simpy` models
 
-* All artifacts in this repository are linked to study researchers via ORCIDs;
-* Model code is made available under the MIT license;
-* Python dependencies are managed through `conda`;
-* The code builds a `streamlit` web application that can be used to run the model (web app);
-* The materials are deposited and made citatable using Zenodo;
-* The models are sharable with other researchers and the NHS without the need to install software.
+## 1. Overview
+
+The materials and methods in this repository support work towards developing the S.T.A.R.S healthcare framework version 1.5 (**S**haring **T**ools and **A**rtifacts for **R**eproducible **S**imulations in healthcare).  The code and written materials here are a work in progress to demonstrate the application of S.T.A.R.S' version to sharing a `simpy` discrete-event simuilation model and associated research artifacts. 
+
+The model will run on a users browser without the need to manually install any components.  This is achieved using WebAssembly technology and serverless `streamlit` i.e. [stlite](https://github.com/whitphx/stlite).  A model and streamlit interface is downloaded to the users local machine and all dependencies are installed at runtime from `pyodide` using micropip. There is a short wait while the model is setup. Once this is complete the model is then executed on the local. No data entered leaves the local machine.
+
+**Please note that `stlite` currently does not work in Mozilla FireFox**
+
+> Try it in your browser now: https://pythonhealthdatascience.github.io/stars-stlite-example
 
 ## Author ORCIDs
 
