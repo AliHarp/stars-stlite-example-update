@@ -9,6 +9,6 @@
 * ENV: Dropped all support for `matplotlib` and removed all `matplotlib` code from `more_plot.py`
 * CITE: Updated CITATION.cff meta data 
 * DOCKER: removed all docker support and associated files.
-
+* PAGES: Information updates to About page.
 
 
