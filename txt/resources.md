@@ -4,11 +4,13 @@
 
 > Detailed model documentation can be found here: https://pythonhealthdatascience.github.io/stars-simpy-example-docs 
 
+> The model is implemented in the `treat-sim` package on PyPi: https://pypi.org/project/treat-sim/
+
 ## Code Repositories and Archive
 
 > GitHub: https://github.com/pythonhealthdatascience/stars-stlite-example 
 
-> Citable archive: https://zenodo.org/records/10935920
+> Citable archive: https://doi.org/10.5281/zenodo.11060532
 
 > Simpy + Streamlit tutorial: https://health-data-science-or.github.io/simpy-streamlit-tutorial 
 

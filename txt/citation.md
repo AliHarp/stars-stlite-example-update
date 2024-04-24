@@ -16,20 +16,21 @@ The model used in this example is based on Nelson (2013).  Please credit this wo
 Please cite this model as
 
 ```
-Monks, T., & Harper, A. (2024). Towards Sharing Tools and Artifacts for Reusable Simulation: deploying a simpy` model as a web app (v3.0.0). Zenodo. https://doi.org/10.5281/zenodo.11034479
+Monks, T., & Harper, A. (2024). Towards Sharing Tools and Artifacts for Reproducible Simulation **(v1.5)**: an `stlite` template for `simpy` models (v0.1.0). Zenodo. https://doi.org/10.5281/zenodo.11060532
 ```
 
 ```bibtex
-@software{monks_streamlit_example,
+@software{monks_harper_stlite_example,
   author       = {Monks, Thomas and
                   Harper, Alison},
-  title        = {{Towards Sharing Tools and Artifacts for Reusable 
-                   Simulation: deploying a `simpy` model as a web app}},
+  title        = {{Towards Sharing Tools and Artifacts for 
+                   Reproducible  Simulation **(v1.5)**: an `stlite`
+                   template for `simpy` models}},
   month        = apr,
   year         = 2024,
   publisher    = {Zenodo},
-  version      = {v3.0.0},
-  doi          = {10.5281/zenodo.11034479},
-  url          = {https://doi.org/10.5281/zenodo.11034479}
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.11060532},
+  url          = {https://doi.org/10.5281/zenodo.11060532}
 }
 ```
