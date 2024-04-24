@@ -1,3 +1,5 @@
+> ℹ️ You are using a `simpy` model app deployed using `stlite`. The model and all data are **local your machine**. No data are uploaded to a remote server and all computation takes place in your browser. 
+
 We have developed a computer based tool for managers of a health clinic for patients with urgent or emergency health problems.  The clinic treats patients with minor trauma, such as impact injuries, broken bones, strains or cuts, and non-trauma, such as acute sickness, pain, and general feelings of being unwell.  Patients do not require an appointment to attend the clinic.  Patients arrive in an ad-hoc manner over the day, but there is a well known pattern of peak and quiet times throughout the day.
 
 The computer tool allows managers to test ways speeding up the clinic processes and improving patient experience. The computer tool allows managers to ask question about the physical design and layout of the clinic, the order in which patients are seen, the diagnostic equipment needed by patients, and the speed of treatments.  For example:
