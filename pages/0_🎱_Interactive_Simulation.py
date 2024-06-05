@@ -122,7 +122,7 @@ with st.sidebar:
 # put info in columns
 col1, col2 = st.columns(2)
 with col1.expander('Treatment process', expanded=False):
-    st.image('img/process_flow_img.jpg')
+    st.image('img/process_flow_img.png')
     st.markdown(INFO_3)
     st.markdown(INFO_4)
 
