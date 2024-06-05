@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11060532.svg)](https://doi.org/10.5281/zenodo.11060532)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11060531.svg)](https://doi.org/10.5281/zenodo.11060531)
 
 > ℹ️ You are using a `simpy` model app deployed using `stlite`. The model and all data are **local your machine**. No data are uploaded to a remote server and all computation takes place in your browser. 
 
