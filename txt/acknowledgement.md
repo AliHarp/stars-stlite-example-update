@@ -2,7 +2,7 @@
 
 This work is part of the **S**haring **T**ools and **A**rtefacts for **R**eproducible **S**imulations (STARS) in Healthcare study.  
 
-> 💡 This study is a fork of [`stars-streamlit-example`: a study investigated deploying Python DES models via streamlit.](https://github.com/pythonhealthdatascience/stars-streamlit-example)
+> 💡 This study is a fork of [`stars-streamlit-example`: a study that investigated deploying Python DES models via streamlit.](https://github.com/pythonhealthdatascience/stars-streamlit-example)
 
 This study is funded [UK Research and Innovation (UKRI)](https://www.ukri.org/) Medical Research Council's (MRC) [*Better Methods, Better Research* programme](https://www.ukri.org/opportunity/better-methods-better-research/).
 
@@ -15,9 +15,8 @@ This study is funded [UK Research and Innovation (UKRI)](https://www.ukri.org/) 
 | Thomas Monks      | [![ORCID: Monks](https://img.shields.io/badge/ORCID-0000--0003--2631--4481-brightgreen)](https://orcid.org/0000-0003-2631-4481) |
 | Alison Harper      | [![ORCID: Harper](https://img.shields.io/badge/ORCID-0000--0001--5274--5037-brightgreen)](https://orcid.org/0000-0001-5274-5037)
 | Navonil Mustafee      | [![ORCID: Mustafee](https://img.shields.io/badge/ORCID-0000--0002--2204--8924-brightgreen)](https://orcid.org/0000-0002-2204-8924)
-| Andrew Mayne   | TBA |
+| Andrew Mayne   | [![ORCID: Mayne](https://img.shields.io/badge/ORCID-0000--0003--1263--2286-brightgreen)](https://orcid.org/0000-0003-1263-2286) |
 | Amy Heather      | [![ORCID: Heather](https://img.shields.io/badge/ORCID-0000--0002--6596--3479-brightgreen)](https://orcid.org/0000-0002-6596-3479)|
-
 
 ## Modelling and Simulation Software
 
