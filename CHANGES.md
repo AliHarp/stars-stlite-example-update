@@ -8,6 +8,10 @@
 * IMG: upgraded process flow image to be consistent with docs
 * CHANGES: modified changlog format to be based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
+### Removed
+
+* IMG: removed redundant process flow .jpg
+
 ## [v0.1.0](https://github.com/pythonhealthdatascience/stars-stlite-example/releases/tag/v0.1.0) - 2024-04-24 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11060532.svg)](https://doi.org/10.5281/zenodo.11060532)
 
 ### Changes
