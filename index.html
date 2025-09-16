@@ -1,71 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>STARS: Stlite deployment of simpy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>STARS: Stlite deployment of SimPy</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.69.2/build/stlite.css"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.89.1/build/stlite.css"
     />
   </head>
   <body>
     <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.69.2/build/stlite.js"></script>
-    <script>
-      stlite.mount(
-  {
-    requirements: ["simpy", "pandas", "numpy", "plotly", "asyncio", "treat-sim==2.1.0"],
-    entrypoint: "Overview.py",
-    files: { 
-"Overview.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/Overview.py"
-},
-"pages/0_🎱_Interactive_Simulation.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/0_🎱_Interactive_Simulation.py"
-},
-"pages/1_💾_Preset_Experiments.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/1_💾_Preset_Experiments.py"
-},
-"pages/2_🔗_Upload.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/2_🔗_Upload.py"
-},
-"pages/3_💫_About.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/3_💫_About.py"
-},
-"pages/4_📖_Citation.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/4_📖_Citation.py"
-},
-"pages/5_🪪_License.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/5_🪪_License.py"
-},
-"pages/6_🔧_Resources.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/6_🔧_Resources.py"
-},
-"pages/7_🗒️_Change_Log.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/7_🗒️_Change_Log.py"
-},
-"model.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/model.py"
-},
-"more_plot.py": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/more_plot.py"
-},
-"img/nihr.png": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/img/nihr.png"
-},
-"img/process_flow_img.png": {
-    url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/img/process_flow_img.png"
-}
 
-    },
-},
-  document.getElementById("root")
-);
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.89.1/build/stlite.js";
+
+      mount(
+        {
+          // Pin only what you need; asyncio is built-in and should NOT be listed
+          requirements: ["simpy", "plotly", "treat-sim==2.2.0"],
+          entrypoint: "Overview.py",
+          files: {
+            "Overview.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/Overview.py"
+            },
+            "pages/0_🎱_Interactive_Simulation.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/0_🎱_Interactive_Simulation.py"
+            },
+            "pages/1_💾_Preset_Experiments.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/1_💾_Preset_Experiments.py"
+            },
+            "pages/2_🔗_Upload.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/2_🔗_Upload.py"
+            },
+            "pages/3_💫_About.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/3_💫_About.py"
+            },
+            "pages/4_📖_Citation.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/4_📖_Citation.py"
+            },
+            "pages/5_🪪_License.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/5_🪪_License.py"
+            },
+            "pages/6_🔧_Resources.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/6_🔧_Resources.py"
+            },
+            "pages/7_🗒️_Change_Log.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/pages/7_🗒️_Change_Log.py"
+            },
+            "model.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/model.py"
+            },
+            "more_plot.py": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/more_plot.py"
+            },
+            "img/nihr.png": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/img/nihr.png"
+            },
+            "img/process_flow_img.png": {
+              url: "https://raw.githubusercontent.com/pythonhealthdatascience/stars-stlite-example/main/img/process_flow_img.png"
+            }
+          },
+          // Optional: set Streamlit config
+          streamlitConfig: {
+            "client.toolbarMode": "viewer"
+          }
+        },
+        document.getElementById("root")
+      );
     </script>
   </body>
 </html>
+

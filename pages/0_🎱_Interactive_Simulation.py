@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from treat_sim import model as md
+from treat_sim.datasets import load_nelson_arrivals
 
 import plotly.express as px
 from PIL import Image
@@ -49,7 +50,8 @@ def get_arrival_chart():
     --------
     plotly figure.
     '''
-    arrivals = pd.read_csv(md.NSPP_PATH)
+    
+    arrivals = load_nelson_arrivals()  # returns a DataFrame with 'period' and 'arrival_rate'
     fig = px.bar(arrivals, x='period', y='arrival_rate',
                  labels={
                     "period": "hour of day",
