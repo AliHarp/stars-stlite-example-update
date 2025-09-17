@@ -22,9 +22,8 @@ def scenario_param_columns():
     "arrivals", "seeds",
     "triage", "registration", "exam", "trauma", "cubicle_1", "cubicle_2",
     "lambda_max",          # arrivals for thinning algorithm
-    "random_number_set",   # used only for reproducibility
+    "random_number_set"  # used only for reproducibility
 }
-
     cols = []
     for k, v in vars(s).items():
         if k.startswith("_") or k in excluded:
