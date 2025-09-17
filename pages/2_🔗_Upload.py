@@ -190,7 +190,7 @@ with st.expander("Download template", expanded=True):
 
 st.divider()
 
-uploaded = st.file_uploader("Upload your scenarios CSV", type=["csv"], help="In this browser-based version, use **Browse files**. Drag and drop is not supported.")
+uploaded = st.file_uploader("Upload your scenarios CSV (use **Browse files**, drag & drop disabled here):", type=["csv"])
 if uploaded is not None:
     df_scen = pd.read_csv(uploaded)
     ok, msg = validate_uploaded(df_scen)
