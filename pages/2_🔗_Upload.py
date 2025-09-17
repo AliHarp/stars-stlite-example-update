@@ -8,7 +8,7 @@ TITLE = "Create custom experiments"
 INFO_3 = "### Upload custom scenarios and compare results."
 INFO_4 = "> Notes: values are interpreted as relative changes to parameters. "
 INFO_5 = "Resource and service times are bounded at 0."
-PARAM_TXT = "txt.import_data.md"
+PARAM_TXT = "txt/import_data.md"
 EXECUTE_TXT = "Execute custom experiments"
 
 # ---------- helpers ----------
@@ -217,6 +217,6 @@ if uploaded is not None:
             key="download-results",
         )
         
-st.markdown(open("txt.import_data.md", encoding="utf-8").read())
+st.markdown(open(PARAM_TEXT, encoding="utf-8").read())
        
 
