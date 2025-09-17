@@ -95,46 +95,51 @@ VALID_FIELDS = set(CAPACITY_FIELDS + TIME_FIELDS + PROB_FIELDS)
 
 def enforce_bounds(sc, warn_fn=None):
     """
-    Ensure scenario parameters are within valid ranges.
+    Ensure Scenario parameters stay within valid ranges.
+
+    Any value outside its allowed range is set to the nearest boundary.
+    A warning is raised (via warn_fn) when an adjustment is made.
 
     Parameters
     ----------
     sc : Scenario
         The scenario instance to correct in-place.
-    warn_fn : callable or None
-        Optional function for warnings (e.g. st.warning).
-        Called as warn_fn(message) if a correction is made.
+    warn_fn : callable or None, optional
+        Function for warnings (e.g. st.warning). Called with a string
+        describing each correction.
 
     Returns
     -------
     Scenario
         The corrected scenario.
     """
-    # capacity counts (must be integers ≥ 0)
+    # 1. Capacity counts: integers ≥ 0
     for k in CAPACITY_FIELDS:
         v = getattr(sc, k)
+        # round to nearest int and clamp at 0
         new_v = max(0, int(round(v)))
         if warn_fn and new_v != v:
-            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+            warn_fn(f"{k}: adjusted from {v} to {new_v} (must be ≥ 0)")
         setattr(sc, k, new_v)
 
-    # service times and variances (floats ≥ 0)
+    # 2. Service times and variances: floats ≥ 0
     for k in TIME_FIELDS:
         v = getattr(sc, k)
         new_v = max(0.0, float(v))
         if warn_fn and new_v != v:
-            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+            warn_fn(f"{k}: adjusted from {v} to {new_v} (must be ≥ 0)")
         setattr(sc, k, new_v)
 
-    # probabilities (floats between 0 and 1)
+    # 3. Probabilities: floats in [0, 1]
     for k in PROB_FIELDS:
         v = getattr(sc, k)
         new_v = min(1.0, max(0.0, float(v)))
         if warn_fn and new_v != v:
-            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+            warn_fn(f"{k}: adjusted from {v} to {new_v} (must be between 0 and 1)")
         setattr(sc, k, new_v)
 
     return sc
+
 
 
 def create_scenarios(df: pd.DataFrame):
@@ -152,7 +157,7 @@ def create_scenarios(df: pd.DataFrame):
             base = 0 if base is None else base
             new_val = base + delta
             setattr(sc, var_name, new_val)
-        sc = enforce_bounds(sc)  # clamps to safe values
+        sc = enforce_bounds(sc, warn_fn=st.warning)
         scenarios[str(row["name"])] = sc
     return scenarios
 
