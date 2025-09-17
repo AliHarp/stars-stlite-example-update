@@ -80,4 +80,16 @@ They are listed here only for completeness:
 |-----------|--------|
 | `arrivals`        | DataFrame of hourly arrival rates (loaded by default from `load_nelson_arrivals()`). |
 | `lambda_max`      | Maximum hourly arrival rate, used by the non-stationary Poisson process thinning algorithm. |
-| `arrival_dist`    | Ex_
+| `arrival_dist`    | Exponential distribution object for candidate interarrival times. |
+| `thinning_rng`    | Uniform RNG used for thinning. |
+| `seeds`           | NumPy seed sequence array used to spawn independent random streams. |
+| `triage`, `registration`, `exam`, `trauma`, `cubicle_1`, `cubicle_2` | `simpy.Resource` objects created at run time. |
+
+These values are recomputed internally each time a simulation run starts.
+
+---
+
+### References
+* Nelson, B.L. (2013). *Foundations and Methods of Stochastic Simulation.*
+* treat_sim package documentation (`Scenario` class).
+
