@@ -117,9 +117,9 @@ def enforce_bounds(sc, warn_fn=None):
     for k in CAPACITY_FIELDS:
         v = getattr(sc, k)
         # round to nearest int and clamp at 0
-        new_v = max(0, int(round(v)))
+        new_v = max(1, int(round(v)))
         if warn_fn and new_v != v:
-            warn_fn(f"{k}: adjusted from {v} to {new_v} (must be ≥ 0)")
+            warn_fn(f"{k}: adjusted from {v} to {new_v} (must be ≥ 1)")
         setattr(sc, k, new_v)
 
     # 2. Service times and variances: floats ≥ 0
