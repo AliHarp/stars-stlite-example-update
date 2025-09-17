@@ -12,6 +12,9 @@ PARAM_TXT = "txt/import_data.md"
 EXECUTE_TXT = "Execute custom experiments"
 
 # ---------- helpers ----------
+import os
+st.write("Current working dir:", os.getcwd())
+
 
 def scenario_param_columns():
     """
