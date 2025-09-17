@@ -67,6 +67,29 @@ def validate_uploaded(df: pd.DataFrame):
     if unknown:
         return False, "Unknown column(s): " + ", ".join(unknown)
     return True, "OK"
+    
+VALID_FIELDS = {
+    "n_triage","n_reg","n_exam","n_trauma","n_cubicles_1","n_cubicles_2",
+    "triage_mean","reg_mean","reg_var","exam_mean","exam_var","exam_min",
+    "trauma_mean","trauma_treat_mean","trauma_treat_var",
+    "non_trauma_treat_mean","non_trauma_treat_var","non_trauma_treat_p",
+    "prob_trauma",
+}
+
+def enforce_bounds(sc):
+    # counts (ints ≥ 0)
+    for k in ["n_triage","n_reg","n_exam","n_trauma","n_cubicles_1","n_cubicles_2"]:
+        setattr(sc, k, max(0, int(round(getattr(sc, k)))))
+    # times/variances (floats ≥ 0)
+    for k in ["triage_mean","reg_mean","reg_var","exam_mean","exam_var","exam_min",
+              "trauma_mean","trauma_treat_mean","trauma_treat_var",
+              "non_trauma_treat_mean","non_trauma_treat_var"]:
+        setattr(sc, k, max(0.0, float(getattr(sc, k))))
+    # probabilities [0,1]
+    for k in ["non_trauma_treat_p","prob_trauma"]:
+        v = float(getattr(sc, k))
+        setattr(sc, k, min(1.0, max(0.0, v)))
+    return sc
 
 def create_scenarios(df: pd.DataFrame):
     """Build dict[name -> Scenario] applying relative deltas."""
@@ -74,16 +97,17 @@ def create_scenarios(df: pd.DataFrame):
     for _, row in df.iterrows():
         sc = md.Scenario()
         for var_name in df.columns.tolist()[2:]:
+            if var_name not in VALID_FIELDS:
+                # optionally: st.warning(f"Unknown field ignored: {var_name}")
+                continue
             delta = 0 if pd.isna(row[var_name]) else row[var_name]
             base = getattr(sc, var_name)
-            if base is None:   # allow None → numeric
-                base = 0
-            try:
-                setattr(sc, var_name, base + delta)
-            except Exception:
-                pass
-        scenarios[row["name"]] = sc
+            base = 0 if base is None else base
+            setattr(sc, var_name, base + delta)
+        sc = enforce_bounds(sc)              # <- enforce before storing
+        scenarios[str(row["name"])] = sc
     return scenarios
+
 
 def run_experiments(scenarios, n_reps: int):
     return md.run_scenario_analysis(
