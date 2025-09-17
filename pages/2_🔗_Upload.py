@@ -13,11 +13,18 @@ EXECUTE_TXT = "Execute custom experiments"
 # ---------- helpers ----------
 
 def scenario_param_columns():
-    """Derive editable Scenario attributes from md.Scenario()."""
+    """
+    Derive editable Scenario attributes from md.Scenario().
+    """
     s = md.Scenario()
+    # exclude simpy resources created at runtime
     excluded = {
-        "arrivals", "seeds",
-        "triage", "registration", "exam", "trauma", "cubicle_1", "cubicle_2",
+    "arrivals", "seeds",
+    "triage", "registration", "exam", "trauma", "cubicle_1", "cubicle_2",
+    "lambda_max",          # arrivals for thinning algorithm
+    "random_number_set",   # used only for reproducibility
+}
+,
     }
     cols = []
     for k, v in vars(s).items():
@@ -68,45 +75,88 @@ def validate_uploaded(df: pd.DataFrame):
         return False, "Unknown column(s): " + ", ".join(unknown)
     return True, "OK"
     
-VALID_FIELDS = {
-    "n_triage","n_reg","n_exam","n_trauma","n_cubicles_1","n_cubicles_2",
-    "triage_mean","reg_mean","reg_var","exam_mean","exam_var","exam_min",
-    "trauma_mean","trauma_treat_mean","trauma_treat_var",
-    "non_trauma_treat_mean","non_trauma_treat_var","non_trauma_treat_p",
-    "prob_trauma",
-}
+# ------------------- field groupings -------------------
+CAPACITY_FIELDS = [
+    "n_triage", "n_reg", "n_exam", "n_trauma", "n_cubicles_1", "n_cubicles_2"
+]
 
-def enforce_bounds(sc):
-    # counts (ints ≥ 0)
-    for k in ["n_triage","n_reg","n_exam","n_trauma","n_cubicles_1","n_cubicles_2"]:
-        setattr(sc, k, max(0, int(round(getattr(sc, k)))))
-    # times/variances (floats ≥ 0)
-    for k in ["triage_mean","reg_mean","reg_var","exam_mean","exam_var","exam_min",
-              "trauma_mean","trauma_treat_mean","trauma_treat_var",
-              "non_trauma_treat_mean","non_trauma_treat_var"]:
-        setattr(sc, k, max(0.0, float(getattr(sc, k))))
-    # probabilities [0,1]
-    for k in ["non_trauma_treat_p","prob_trauma"]:
-        v = float(getattr(sc, k))
-        setattr(sc, k, min(1.0, max(0.0, v)))
+TIME_FIELDS = [
+    "triage_mean", "reg_mean", "reg_var", "exam_mean", "exam_var", "exam_min",
+    "trauma_mean", "trauma_treat_mean", "trauma_treat_var",
+    "non_trauma_treat_mean", "non_trauma_treat_var"
+]
+
+PROB_FIELDS = [
+    "non_trauma_treat_p", "prob_trauma"
+]
+
+# Convenience if you still need a master list of editable fields
+VALID_FIELDS = set(CAPACITY_FIELDS + TIME_FIELDS + PROB_FIELDS)
+
+
+def enforce_bounds(sc, warn_fn=None):
+    """
+    Ensure scenario parameters are within valid ranges.
+
+    Parameters
+    ----------
+    sc : Scenario
+        The scenario instance to correct in-place.
+    warn_fn : callable or None
+        Optional function for warnings (e.g. st.warning).
+        Called as warn_fn(message) if a correction is made.
+
+    Returns
+    -------
+    Scenario
+        The corrected scenario.
+    """
+    # capacity counts (must be integers ≥ 0)
+    for k in CAPACITY_FIELDS:
+        v = getattr(sc, k)
+        new_v = max(0, int(round(v)))
+        if warn_fn and new_v != v:
+            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+        setattr(sc, k, new_v)
+
+    # service times and variances (floats ≥ 0)
+    for k in TIME_FIELDS:
+        v = getattr(sc, k)
+        new_v = max(0.0, float(v))
+        if warn_fn and new_v != v:
+            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+        setattr(sc, k, new_v)
+
+    # probabilities (floats between 0 and 1)
+    for k in PROB_FIELDS:
+        v = getattr(sc, k)
+        new_v = min(1.0, max(0.0, float(v)))
+        if warn_fn and new_v != v:
+            warn_fn(f"{k}: adjusted from {v} to {new_v}")
+        setattr(sc, k, new_v)
+
     return sc
 
+
 def create_scenarios(df: pd.DataFrame):
-    """Build dict[name -> Scenario] applying relative deltas."""
+    """
+    Build dict[name -> Scenario] applying relative deltas, with warnings if inputs are out of range or unknown.
+    """
     scenarios = {}
     for _, row in df.iterrows():
         sc = md.Scenario()
         for var_name in df.columns.tolist()[2:]:
             if var_name not in VALID_FIELDS:
-                # optionally: st.warning(f"Unknown field ignored: {var_name}")
                 continue
             delta = 0 if pd.isna(row[var_name]) else row[var_name]
             base = getattr(sc, var_name)
             base = 0 if base is None else base
-            setattr(sc, var_name, base + delta)
-        sc = enforce_bounds(sc)              # <- enforce before storing
+            new_val = base + delta
+            setattr(sc, var_name, new_val)
+        sc = enforce_bounds(sc)  # clamps to safe values
         scenarios[str(row["name"])] = sc
     return scenarios
+
 
 
 def run_experiments(scenarios, n_reps: int):

@@ -1,0 +1,83 @@
+# Running multiple scenarios
+
+To run multiple scenarios and compare outputs, you can custom create and upload a CSV file of scenario parameters.
+
+> Note: Your data is uploaded into your browser, not into a remote environment. This minimises the risk of data security, as it is not leaving your organisation.
+
+A template can be downloaded below, with optional example scenarios as rows, and parameter variables as columns.
+
+## Scenario Parameters
+
+All default values correspond to the **as-is** urgent-care treatment-centre model adapted from Nelson (2013).
+
+Changes added to the scenario file are relative to the defaults values.
+
+---
+
+## 1. Capacity / Resource Counts
+Number of parallel servers (e.g. cubicles or rooms) of each type.
+
+| Parameter | Default | Description |
+|-----------|--------:|------------|
+| `n_triage`      | **1** | Number of triage bays where all patients sign in and are assessed. |
+| `n_reg`         | **1** | Number of registration clerks for non-trauma patients. |
+| `n_exam`        | **3** | Number of examination rooms for non-trauma patients. |
+| `n_trauma`      | **2** | Number of trauma bays used for stabilising trauma patients. |
+| `n_cubicles_1`  | **1** | Number of non-trauma treatment cubicles. |
+| `n_cubicles_2`  | **1** | Number of trauma treatment cubicles. |
+
+These must be non-negative integers. Increasing them adds capacity. Non-negative values will default to 0.
+
+---
+
+## 2. Time Distributions
+Mean (and variance, where relevant) of process durations in **minutes**.
+
+| Parameter | Default | Description |
+|-----------|--------:|------------|
+| `triage_mean`            | **3.0**  | Mean duration of triage (Exponential). |
+| `reg_mean`               | **5.0**  | Mean duration of registration (Lognormal). |
+| `reg_var`                | **2.0**  | Variance of registration time (Lognormal). |
+| `exam_mean`              | **16.0** | Mean duration of examination (Truncated Normal). |
+| `exam_var`               | **3.0**  | Variance of examination time (Truncated Normal). |
+| `exam_min`               | **0.5**  | Minimum possible examination time (minutes). |
+| `trauma_mean`            | **90.0** | Mean duration of trauma stabilisation (Exponential). |
+| `trauma_treat_mean`      | **30.0** | Mean duration of trauma cubicle treatment (Lognormal). |
+| `trauma_treat_var`       | **4.0**  | Variance of trauma cubicle treatment (Lognormal). |
+| `non_trauma_treat_mean`  | **13.3** | Mean duration of non-trauma treatment (Lognormal). |
+| `non_trauma_treat_var`   | **2.0**  | Variance of non-trauma treatment (Lognormal). |
+
+All times and variances must be non-negative or will default ot
+
+---
+
+## 3. Probabilities
+Probabilities governing branching behaviour.
+
+| Parameter | Default | Description |
+|-----------|--------:|------------|
+| `non_trauma_treat_p` | **0.60** | Probability that a non-trauma patient requires treatment after examination. |
+| `prob_trauma`       | **0.12** | Probability that a newly arriving patient is triaged as trauma. |
+
+These must remain within the range **0 ≤ p ≤ 1**.
+
+---
+
+## 4. Stochastic Control (optional / advanced)
+Normally left at defaults but available for reproducibility.
+
+| Parameter | Default | Description |
+|-----------|--------:|------------|
+| `random_number_set` | **None** | Master seed used to initialise multiple independent random streams. Set to an integer to get repeatable runs across replications. |
+
+---
+
+## 5. Derived or Internal Attributes
+The following attributes are created internally and **not meant to be set in a scenario file**.  
+They are listed here only for completeness:
+
+| Attribute | Purpose |
+|-----------|--------|
+| `arrivals`        | DataFrame of hourly arrival rates (loaded by default from `load_nelson_arrivals()`). |
+| `lambda_max`      | Maximum hourly arrival rate, used by the non-stationary Poisson process thinning algorithm. |
+| `arrival_dist`    | Ex_
