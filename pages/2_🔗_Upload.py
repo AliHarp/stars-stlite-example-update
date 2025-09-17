@@ -7,7 +7,7 @@ import treat_sim.model as md  # Scenario + runners
 TITLE = "Create custom experiments"
 INFO_3 = "### Upload custom scenarios and compare results."
 INFO_4 = "> Notes: values are interpreted as relative changes to parameters. "
-INFO_5 = "Resource counts are bounded at 0.
+INFO_5 = "Resource counts are bounded at 0."
 PARAM_TXT = "txt.import_data.md"
 EXECUTE_TXT = "Execute custom experiments"
 
