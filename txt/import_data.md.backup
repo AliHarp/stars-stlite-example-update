@@ -26,7 +26,7 @@ Number of parallel servers (e.g. cubicles or rooms) of each type.
 | `n_cubicles_1`  | **1** | Number of non-trauma treatment cubicles. |
 | `n_cubicles_2`  | **1** | Number of trauma treatment cubicles. |
 
-These must be non-negative or non-zero integers. Increasing them adds capacity. Non-negative values will default to 1.
+These must be non-negative integers. Increasing them adds capacity. Non-negative values will default to 0.
 
 ---
 

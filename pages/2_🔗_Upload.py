@@ -49,14 +49,14 @@ def build_template_df(include_examples: bool = True) -> pd.DataFrame:
         return pd.DataFrame(columns=["id", "name"] + cols)
 
     # example rows (all others default to zero change)
-    ex1 = {"id": 1, "name": "exam+1", **{c: 0 for c in cols}}
+    ex1 = {"id": 1, "name": "Add extra exam room non-trauma", **{c: 0 for c in cols}}
     if "n_exam" in cols: ex1["n_exam"] = 1
 
-    ex2 = {"id": 2, "name": "short_exam", **{c: 0 for c in cols}}
+    ex2 = {"id": 2, "name": "Reduce exam time for non-trauma", **{c: 0 for c in cols}}
     if "exam_mean" in cols: ex2["exam_mean"] = -4.0
 
-    ex3 = {"id": 3, "name": "treat+1", **{c: 0 for c in cols}}
-    if "n_cubicles_1" in cols: ex3["n_cubicles_1"] = 1
+    ex3 = {"id": 3, "name": "Add extra trauma treatment cubicle", **{c: 0 for c in cols}}
+    if "n_cubicles_2" in cols: ex3["n_cubicles_2"] = 1
 
     return pd.DataFrame([ex1, ex2, ex3], columns=["id", "name"] + cols)
 
