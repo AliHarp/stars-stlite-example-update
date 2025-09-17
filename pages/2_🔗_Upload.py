@@ -217,6 +217,6 @@ if uploaded is not None:
             key="download-results",
         )
         
-st.markdown(open(PARAM_TEXT, encoding="utf-8").read())
+st.markdown(open(PARAM_TXT, encoding="utf-8").read())
        
 
